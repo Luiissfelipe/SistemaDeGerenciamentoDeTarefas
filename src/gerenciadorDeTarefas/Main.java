@@ -1,5 +1,7 @@
 package gerenciadorDeTarefas;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -19,9 +21,22 @@ public class Main {
                 """);
     }
 
+    public static void adicionarTarefa(List<String[]> tarefas) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Digite a descrição da tarefa:");
+        String descricao = input.next();
+        String data = "30/09/24";
+        String status = "pendente";
+        String[] tarefa = {descricao, data, status};
+        tarefas.add(tarefa);
+        System.out.println("Tarefa adicionada!");
+    }
+
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
+        List<String[]> tarefas = new ArrayList<>();
         int opcao;
 
         //Loop para executar o código até que seja solicitado o fim
@@ -32,6 +47,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    adicionarTarefa(tarefas);
                     break;
                 case 2:
                     break;
