@@ -76,6 +76,39 @@ public class Main {
                 }
         }
     }
+ 
+  //Metodo para escolher quais tarefas serão listadas
+    public static void escolherTarefa(List<String[]> tarefas) {
+        //Declarando o scanner
+        Scanner input = new Scanner(System.in);
+        //Menu para escolher o tipo de tarefa a ser exibida
+        System.out.print("""
+                            Quais tarefas você deseja que sejam listadas?
+                            
+                            1 - Pendentes
+                            2 - Concluídas
+                            3 - Todas
+                            """);
+        //Lendo a escolha feita
+        int escolha = input.nextInt();
+        switch (escolha) {
+            case 1:
+                //Chamando o metodo para listar as tarefas pendentes
+                listarTarefas(tarefas, "pendente");
+                break;
+            case 2:
+                //Chamando o metodo para listar as tarefas concluidas
+                listarTarefas(tarefas, "concluida");
+                break;
+            case 3:
+                //Chamando o metodo para listar todas tarefas
+                listarTarefas(tarefas, "todas");
+                break;
+            default:
+                //Exibindo erro para opção invalida
+                System.out.println("Você digitou uma opção inválida!");
+        }
+    }
     
     public static void main(String[] args) {
         //Declaração das variáveis
