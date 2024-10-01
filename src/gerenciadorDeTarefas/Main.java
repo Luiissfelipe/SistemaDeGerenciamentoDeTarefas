@@ -110,6 +110,34 @@ public class Main {
         }
     }
     
+    public static void mudarStatus(List<String[]> tarefas) {
+        //Declarando o scanner
+        Scanner input = new Scanner(System.in);
+        //Chamando o metodo para listar todas as tarefas adicionadas
+        listarTarefas(tarefas, "todas");
+        System.out.println("\nDigite o número da tarefa que deseja mudar o status");
+        //Declarando e lendo o indice
+        int indice = input.nextInt();
+        //Loop para alterar o status da tarefa selecionada
+        if (indice > tarefas.size() || indice < 1) {
+            //Erro caso o indice digitado não for válido
+            System.out.println("Você digitou um número inválido!");
+        } else {
+            //Acessando a tarefa na lista de tarefas de acordo com o indice digitado
+            String[] tarefa = tarefas.get(indice - 1);
+
+            if (tarefa[2] == "PENDENTE"){
+                //Caso o status for pendente, mudará para concluida
+                tarefa[2] = "CONCLUÍDA";
+                System.out.println("Status alterado!");
+            } else if (tarefa[2] == "CONCLUÍDA") {
+                //Caso o status for concluida, mudará para pendente
+                tarefa[2] = "PENDENTE";
+                System.out.println("Status alterado!");
+            }
+        }
+    }
+    
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
