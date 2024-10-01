@@ -42,7 +42,25 @@ public class Main {
         tarefas.add(tarefa);
         System.out.println("Tarefa adicionada!");
     }
-
+    //Metodo para remover uma tarefa
+    public static void removerTarefa(List<String[]> tarefas) {
+        //Declarando o scanner
+        Scanner input = new Scanner(System.in);
+        //Chamando o metodo para listar todas tarefas
+        listarTarefas(tarefas, "todas");
+        System.out.println("\nDigite o número da tarefa que você deseja remover:");
+        //Declarando o indice para escolher qual tarefa remover
+        int indice = input.nextInt();
+        if (indice > tarefas.size() || indice < 1) {
+            //Exibindo erro caso o numero digitado seja invalido
+            System.out.println("Você digitou um número inválido!");
+        } else {
+            //Removendo tarefa desejada
+            tarefas.remove(indice - 1);
+            System.out.println("Tarefa removida!");
+        }
+    }
+    //Metodo para listar as tarefas adicionadas
     public static void listarTarefas(List<String[]> tarefas, String status) {
         switch (status){
             //Exibindo tarefas pendentes
@@ -76,8 +94,7 @@ public class Main {
                 }
         }
     }
- 
-  //Metodo para escolher quais tarefas serão listadas
+    //Metodo para escolher quais tarefas serão listadas
     public static void escolherTarefa(List<String[]> tarefas) {
         //Declarando o scanner
         Scanner input = new Scanner(System.in);
@@ -109,7 +126,7 @@ public class Main {
                 System.out.println("Você digitou uma opção inválida!");
         }
     }
-    
+    //Metodo para mudar o status da tarefa (pendente ou concluida)
     public static void mudarStatus(List<String[]> tarefas) {
         //Declarando o scanner
         Scanner input = new Scanner(System.in);
@@ -135,8 +152,8 @@ public class Main {
                 tarefa[2] = "PENDENTE";
                 System.out.println("Status alterado!");
             }
-        }
-    }
+        }
+    }
     
     public static void main(String[] args) {
         //Declaração das variáveis
@@ -155,10 +172,13 @@ public class Main {
                     adicionarTarefa(tarefas);
                     break;
                 case 2:
+                    removerTarefa(tarefas);
                     break;
                 case 3:
+                    mudarStatus(tarefas);
                     break;
                 case 4:
+                    escolherTarefa(tarefas);
                     break;
                 case 5:
                     break;
