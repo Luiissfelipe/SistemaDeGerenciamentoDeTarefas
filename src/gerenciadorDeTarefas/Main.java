@@ -43,6 +43,40 @@ public class Main {
         System.out.println("Tarefa adicionada!");
     }
 
+    public static void listarTarefas(List<String[]> tarefas, String status) {
+        switch (status){
+            //Exibindo tarefas pendentes
+            case "pendente":
+                System.out.println("\nTodas tarefas pendentes:\n");
+                for (int i = 0; i < tarefas.size(); i++) {
+                    String[] tarefa = tarefas.get(i);
+                    if (tarefa[2] == "PENDENTE") {
+                        System.out.printf("%d. %s (Criada em: %s)\n", i + 1, tarefa[0], tarefa[1]);
+                    }
+                }
+                break;
+                //Exibindo tarefas concluidas
+            case "concluida":
+                System.out.println("\nTodas tarefas concluídas:\n");
+                for (int i = 0; i < tarefas.size(); i++) {
+                    String[] tarefa = tarefas.get(i);
+                    if (tarefa[2] == "CONCLUÍDA") {
+                        System.out.printf("%d. %s (Criada em: %s)\n", i + 1, tarefa[0], tarefa[1]);
+                    }
+                }
+                break;
+                //Exibindo todas tarefas
+            case "todas":
+                System.out.println("\nTodas tarefas cadastradas:\n");
+                for (int i = 0; i < tarefas.size(); i++) {
+                    //Declarando e acessando a tarefa na lista de tarefas
+                    String[] tarefa = tarefas.get(i);
+                    //Imprimindo cada tarefa da lista de tarefas
+                    System.out.printf("%d. %s (Criada em: %s) - %s\n", i + 1, tarefa[0], tarefa[1], tarefa[2]);
+                }
+        }
+    }
+    
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
