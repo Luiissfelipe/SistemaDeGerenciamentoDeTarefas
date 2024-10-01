@@ -1,5 +1,7 @@
 package gerenciadorDeTarefas;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,15 +22,23 @@ public class Main {
                 Digite a opção desejada:
                 """);
     }
-
+    //Metodo para adicionar uma nova tarefa
     public static void adicionarTarefa(List<String[]> tarefas) {
+        //Declarando o scanner
         Scanner input = new Scanner(System.in);
 
+        LocalDate dataAtual = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy");
+        String dataFormatada = dataAtual.format(formato);
+
         System.out.println("Digite a descrição da tarefa:");
-        String descricao = input.next();
-        String data = "30/09/24";
-        String status = "pendente";
-        String[] tarefa = {descricao, data, status};
+        //Lendo a descrição da tarefa
+        String descricao = input.nextLine();
+        //Definindo o status da tarefa como pendente
+        String status = "PENDENTE";
+        //Criando o vetor da tarefa adicionada
+        String[] tarefa = {descricao, dataFormatada, status};
+        //Adicionando a tarefa a lista de tarefas
         tarefas.add(tarefa);
         System.out.println("Tarefa adicionada!");
     }
