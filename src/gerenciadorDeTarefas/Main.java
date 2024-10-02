@@ -73,7 +73,7 @@ public class Main {
                     }
                 }
                 break;
-                //Exibindo tarefas concluidas
+            //Exibindo tarefas concluidas
             case "concluida":
                 System.out.println("\nTodas tarefas concluídas:\n");
                 for (int i = 0; i < tarefas.size(); i++) {
@@ -83,7 +83,7 @@ public class Main {
                     }
                 }
                 break;
-                //Exibindo todas tarefas
+            //Exibindo todas tarefas
             case "todas":
                 System.out.println("\nTodas tarefas cadastradas:\n");
                 for (int i = 0; i < tarefas.size(); i++) {
@@ -154,7 +154,7 @@ public class Main {
             }
         }
     }
-    
+
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
@@ -163,22 +163,32 @@ public class Main {
 
         //Loop para executar o código até que seja solicitado o fim
         do {
-
-            mostrarMenu(); //Chamando o método para mostrar o menu
-            opcao = input.nextInt(); // Lendo a opção escolhida
-
+            //Chamando o metodo para mostrar o menu
+            mostrarMenu();
+            //Lendo a opção escolhida
+            opcao = input.nextInt();
+            //Realizando a operação de acordo com a opção escolhida
             switch (opcao) {
                 case 1:
+                    //Chamando o metodo para adicionar uma tarefa
                     adicionarTarefa(tarefas);
                     break;
                 case 2:
+                    //Chamando o metodo para remover uma tarefa
                     removerTarefa(tarefas);
                     break;
                 case 3:
+                    //Chamando o metodo para alterar o status da tarefa adicionada
                     mudarStatus(tarefas);
                     break;
                 case 4:
-                    escolherTarefa(tarefas);
+                    //Verificando se há alguma tarefa adicionada
+                    if (tarefas.size() == 0) {
+                        System.out.println("Não foi encontrada nenhuma tarefa!");
+                    } else {
+                        //Chamando o metodo para escolher quais tarefas serão listadas
+                        escolherTarefa(tarefas);
+                    }
                     break;
                 case 5:
                     break;
