@@ -1,0 +1,6 @@
+acordar,08/10/24,CONCLUÍDA
+lavar vasilhas,08/10/24,CONCLUÍDA
+lavar casa,08/10/24,PENDENTE
+fazer almoço,08/10/24,CONCLUÍDA
+fazer compras,08/10/24,PENDENTE
+estudar,08/10/24,CONCLUÍDA

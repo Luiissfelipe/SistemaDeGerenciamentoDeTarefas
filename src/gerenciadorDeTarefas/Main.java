@@ -1,8 +1,6 @@
 package gerenciadorDeTarefas;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -157,10 +155,10 @@ public class Main {
             }
         }
     }
-    //Metodo para salvar as tarefas em um arquivo txt
+    //Metodo para salvar as tarefas em um arquivo .txt
     public static void salvarTarefas(List<String[]> tarefas) {
         //Usando o escritor para salvar as tarefas criadas em um arquivo .txt
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("arquivo.txt"));) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("tarefas.txt"));) {
             for (int i = 0; i < tarefas.size(); i++) {
                 String[] tarefa = tarefas.get(i);
                 escritor.write(String.join(",", tarefa));
@@ -170,11 +168,29 @@ public class Main {
             System.out.println("Erro ao salvar tarefas!");
         }
     }
+    //Metodo para carregar tarefas de um arquivo .txt
+    public static List<String[]> carregarTarefas() {
+        //Criando uma lista de arrays
+        List<String[]> tarefas = new ArrayList<>();
+        //Usando o leitor para acessar um arquivo
+        try (BufferedReader leitor =new BufferedReader(new FileReader("tarefas.txt"))) {
+            String linha;
+            while ((linha = leitor.readLine()) != null) {
+            String[] tarefa = linha.split(",");
+            tarefas.add(tarefa);
+            }
+        } catch (IOException e) {
+            System.out.println("Nenhum arquivo foi encontrado. Um novo sera criado.");
+        }
+        return tarefas;
+    }
+
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
-        List<String[]> tarefas = new ArrayList<>();
         int opcao;
+        //Chamando o metodo para carregar as tarefas lidas em um arquivo .txt e adicionar na lista de strings
+        List<String[]> tarefas = carregarTarefas();
 
         //Loop para executar o código até que seja solicitado o fim
         do {
