@@ -1,5 +1,8 @@
 package gerenciadorDeTarefas;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -154,7 +157,19 @@ public class Main {
             }
         }
     }
-
+    //Metodo para salvar as tarefas em um arquivo txt
+    public static void salvarTarefas(List<String[]> tarefas) {
+        //Usando o escritor para salvar as tarefas criadas em um arquivo .txt
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("arquivo.txt"));) {
+            for (int i = 0; i < tarefas.size(); i++) {
+                String[] tarefa = tarefas.get(i);
+                escritor.write(String.join(",", tarefa));
+                escritor.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar tarefas!");
+        }
+    }
     public static void main(String[] args) {
         //Declaração das variáveis
         Scanner input = new Scanner(System.in);
@@ -191,6 +206,9 @@ public class Main {
                     }
                     break;
                 case 5:
+                    //Chamando o metodo para salvar as tarefas adicionadas
+                    salvarTarefas(tarefas);
+                    System.out.println("Salvo!");
                     break;
                 default:
                     System.out.println("\nVocê digitou uma opção invalida!");
